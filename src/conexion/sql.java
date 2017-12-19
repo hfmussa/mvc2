@@ -1,14 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package conexion;
 
-/**
- *
- * @author Duoc UC
- */
+package conexion;
+import java.sql.*;
+
 public class sql {
-    
+     public static void connect() {
+        String url; //el jdbc:mysql es que vengo del worksbench de mysql, si utilizo otro programa se busca otra libreria
+        url = "jdbc:mysql://localhost:3306/bd_prueba";
+        String user = "root";
+        String pass = "";
+        System.out.println("Proceso de conexión...");
+        try (Connection connection = DriverManager.getConnection(url, user, pass)) {
+            System.out.println("Conectados!!!");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        connect();
+    }
+
 }
+
